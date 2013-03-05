@@ -1,0 +1,18 @@
+<h2><%= @task.name %></h2>
+
+<%#This displays all the subtasks belonging to a task.%>
+<% @task.subtasks.each do |subtask| %>
+	<ul>
+		<li><b><%= subtask.name %> - </b><%= subtask.description %></li>
+	</ul>
+<% end %>
+
+<%# This allows new subtasks to be added.
+AS OF THIS RELEASE: This feature does not work. Simply hit Back on your browser if you attempt to create a new subtask. %>
+<h3>Add Subtask</h3>
+<%= form_for [@user, @task, @subtask] do |form| %>
+	<p>Name: <%= form.text_field :name %> Description: <%= form.text_field :description %><%= form.submit %></p>
+<% end %>
+
+<hr />
+<%= link_to "Back to all tasks", user_url %>

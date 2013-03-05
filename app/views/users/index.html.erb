@@ -1,0 +1,12 @@
+<h1>Users</h1>
+
+<%# This is the main page. It links to the users, and allows the creation of a new user. %>
+<% @users.each do |user| %>
+
+	<h2><%= link_to "#{user.name}", user_url(user) %></h2>
+
+<% end %>
+
+<hr />
+
+<%= link_to "New User?", new_user_url %>

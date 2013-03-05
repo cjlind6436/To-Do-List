@@ -1,0 +1,13 @@
+<h2><%= @user.name %></h2>
+<ul>
+	<%# This displays the tasks by ID. It provides links to Edit and Delete.
+	AS OF THIS RELEASE: To access individual tasks, you must navigate to the task ID using the address bar. The link incorrectly tries to go to the task ID matching the user ID (i.e for User 1, it will always go to Task 1)
+	AS OF THIS RELEASE: Do NOT use delete. Deleting task of ID X will make the account of user with ID X inaccesable (i.e. deleting task with ID 3 will make the account of user with ID 3 inaccessable.%>
+	<% @user.tasks.each do |task| %>
+		<li><b><%= link_to "#{task.name}", user_task_url(@user, @task) %> - </b><%= task.description %> - <%= link_to "Edit", edit_user_task_url(@task) %> | <%#<%= link_to "Delete", user_task_url(@task), :method => :delete %></li>
+	<% end %>
+</ul>
+<%= link_to "Add task", new_user_task_url(@user, @task) %> <%# Allows the user to add a task %>
+
+<hr />
+<%= link_to "Back to all users", users_url %>

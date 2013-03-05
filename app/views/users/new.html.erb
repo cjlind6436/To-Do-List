@@ -1,0 +1,12 @@
+<h1>New User</h1>
+
+<%# This is the page for creating a new user. A password column has been included in the MySQL database, so implementing a password is possible. Points have also been included in the MySQL database, so adding points from completed tasks to the user is also possible %>
+<%= form_for @user do |form| %>
+
+	<label>Name: 
+		<p><%= form.text_field :name %></p>
+	</label>
+
+	<p><%= form.submit %></p>
+
+<% end %>
